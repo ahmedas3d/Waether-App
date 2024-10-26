@@ -2,14 +2,13 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:weather_app/models/weather_model.dart';
 
-class WeatherServices {
+class WeatherService {
   final Dio dio;
   final String baseUrl = 'https://api.weatherapi.com/v1';
   final String apiKey = 'db5e021cddd742e1b7e112546242210';
 
-  WeatherServices({required this.dio});
-  Future<WeatherModel> getCurrentWeather(
-      {required String cityName, required BuildContext context}) async {
+  WeatherService({required this.dio});
+  Future<WeatherModel> getCurrentWeather({required String cityName}) async {
     try {
       Response response = await dio.get(
         '$baseUrl/forecast.json?key=$apiKey&q=$cityName&day=1',
